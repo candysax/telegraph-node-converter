@@ -1,0 +1,23 @@
+{
+    "name": "candysax/html-to-telegraph-node",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "HtmlToTelegraphNode\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniil Ishin",
+            "email": "ishin.daniil@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^10.3",
+        "monolog/monolog": "^3.4"
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.7"
+    }
+}

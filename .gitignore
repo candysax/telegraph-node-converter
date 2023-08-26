@@ -1,0 +1,10 @@
+.DS_Store
+vendor/
+composer.lock
+.phpunit.cache/
+/.idea
+composer.phar
+.php_cs.cache
+.phpunit.result.cache
+Thumbs.db
+test.php
