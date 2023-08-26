@@ -19,7 +19,12 @@ class HTML
         $dom->encoding = 'UTF-8';
         $dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
-        $root = $dom->documentElement;
+        $bodyElement = $dom->getElementsByTagName('body')[0];
+        if (isset($bodyElement)) {
+            $root = $bodyElement;
+        } else {
+            $root = $dom->documentElement;
+        }
 
         return new Node(self::collectElemenets($root));
     }
