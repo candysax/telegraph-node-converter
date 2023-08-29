@@ -5,7 +5,7 @@ namespace HtmlToTelegraphNode;
 use DOMDocument;
 use DOMElement;
 use DOMText;
-use HtmlToTelegraphNode\Types\Node;
+use HtmlToTelegraphNode\Types\NodeType;
 
 class HTML
 {
@@ -15,8 +15,7 @@ class HTML
     {
         $html = "<div>{$html}</div>";
 
-        $dom = new DOMDocument();
-        $dom->encoding = 'UTF-8';
+        $dom = new DOMDocument(encoding: 'UTF-8');
         $dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
         $bodyElement = $dom->getElementsByTagName('body')[0];
@@ -26,7 +25,7 @@ class HTML
             $root = $dom->documentElement;
         }
 
-        return new Node(self::collectElemenets($root));
+        return new NodeType(self::collectElemenets($root));
     }
 
 

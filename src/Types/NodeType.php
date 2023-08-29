@@ -2,12 +2,11 @@
 
 namespace HtmlToTelegraphNode\Types;
 
-use HtmlToTelegraphNode\Node as HtmlToTelegraphNodeNode;
+use HtmlToTelegraphNode\Node;
 
-class Node
+class NodeType
 {
     private array $nodes;
-
 
     public function __construct(array $nodes)
     {
@@ -17,7 +16,7 @@ class Node
 
     public function convertToHtml()
     {
-        HtmlToTelegraphNodeNode::convertToHtml($this->nodes);
+        return Node::convertToHtml($this->nodes);
     }
 
 
@@ -27,7 +26,7 @@ class Node
     }
 
 
-    public function nodes()
+    public function array()
     {
         return $this->nodes;
     }

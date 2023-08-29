@@ -1,21 +1,18 @@
 <?php
 
 use HtmlToTelegraphNode\HTML;
-use HtmlToTelegraphNode\Types\Node;
+use HtmlToTelegraphNode\Types\NodeType;
 use PHPUnit\Framework\TestCase;
 
-/**
- * HTMLTest
- * @group group
- */
-class HTMLTest extends TestCase
+
+final class HTMLTest extends TestCase
 {
     /** @test */
     public function test_is_node()
     {
         $input = 'Hello world';
 
-        $this->assertInstanceOf(Node::class, HTML::convertToNode($input));
+        $this->assertInstanceOf(NodeType::class, HTML::convertToNode($input));
     }
 
 
@@ -40,6 +37,20 @@ class HTMLTest extends TestCase
             json_encode([[
                 'tag' => 'p',
                 'children' => ['Hello world'],
+            ]]),
+            HTML::convertToNode($input)->json()
+        );
+    }
+
+
+    /** @test */
+    public function test_convert_empty_tag()
+    {
+        $input = '<p></p>';
+
+        $this->assertSame(
+            json_encode([[
+                'tag' => 'p',
             ]]),
             HTML::convertToNode($input)->json()
         );
