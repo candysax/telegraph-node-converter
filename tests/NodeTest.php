@@ -1,5 +1,6 @@
 <?php
 
+use HtmlToTelegraphNode\Exceptions\IncorrectInputFormatException;
 use HtmlToTelegraphNode\Node;
 use HtmlToTelegraphNode\Types\HTMLType;
 use PHPUnit\Framework\TestCase;
@@ -354,12 +355,36 @@ final class NodeTest extends TestCase
     }
 
 
+    /** @test */
+    public function test_array_of_nodes_contains_not_only_arrays_and_strings()
+    {
+        $this->expectException(IncorrectInputFormatException::class);
+        Node::convertToHtml([
+            42,
+            [
+                'tag' => 'b',
+                'children' => [
+                    'bold text',
+                ],
 
-    // /** @test */
-    // public function test_pass_in_incorrect_format()
-    // {
-    //     $this->expectException(IncorrectNodeFormatException::class);
+            ]
+        ]);
+    }
 
 
-    // }
+    /** @test */
+    public function test_node_array_does_not_contain_the_tag_name()
+    {
+        $this->expectException(IncorrectInputFormatException::class);
+        Node::convertToHtml([
+            'Hello world ',
+            [
+                'children' => [
+                    'bold text',
+                ],
+
+            ]
+        ]);
+    }
+
 }
