@@ -19,7 +19,7 @@ class Node
      * Converts the given Telegraph Node to its HTML representation.
      *
      * @param string|array $nodes The node to convert to HTML representations.
-     *
+     * @throws IncorrectInputFormatException If an incorrect node array format is passed.
      * @return HTMLType A class containing the HTML representation of the node in string or DOMDocument format.
      */
     public static function convertToHtml(string|array $nodes)
@@ -40,9 +40,7 @@ class Node
      * Recursive function that traverses the array hierarchy and generates HTML code.
      *
      * @param array $parent The element of the array in which we collect children.
-     *
      * @throws IncorrectInputFormatException If an incorrect node array format is passed.
-     *
      * @return string An element in HTML format.
      */
     private static function collectElemenets(array $parent)

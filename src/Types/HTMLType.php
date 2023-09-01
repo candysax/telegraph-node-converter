@@ -10,6 +10,7 @@ use HtmlToTelegraphNode\HTML;
  * Class HTMLType
  *
  * This class containing the HTML representation of the node in string or DOMDocument format.
+ *
  * @property string $html HTML string.
  */
 class HTMLType

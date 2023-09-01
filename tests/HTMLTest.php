@@ -188,32 +188,38 @@ final class HTMLTest extends TestCase
     /** @test */
     public function test_convert_list_and_link()
     {
-        $input = '<ol><li>Item 1</li><li>Item 2</li><li><a href="#">Item 3</a></li></ol>';
+        $input = '<ol><li>Item 1</li><li>Item 2</li><li><a href="#">Item 3</a></li></ol><p>test text</p>';
 
         $this->assertSame(
-            json_encode([[
-                'tag' => 'ol',
-                'children' => [
-                    [
-                        'tag' => 'li',
-                        'children' => ['Item 1'],
-                    ],
-                    [
-                        'tag' => 'li',
-                        'children' => ['Item 2'],
-                    ],
-                    [
-                        'tag' => 'li',
-                        'children' => [
-                            [
-                                'tag' => 'a',
-                                'attrs' => ['href' => '#'],
-                                'children' => ['Item 3']
+            json_encode([
+                [
+                    'tag' => 'ol',
+                    'children' => [
+                        [
+                            'tag' => 'li',
+                            'children' => ['Item 1'],
+                        ],
+                        [
+                            'tag' => 'li',
+                            'children' => ['Item 2'],
+                        ],
+                        [
+                            'tag' => 'li',
+                            'children' => [
+                                [
+                                    'tag' => 'a',
+                                    'attrs' => ['href' => '#'],
+                                    'children' => ['Item 3']
+                                ],
                             ],
                         ],
                     ],
                 ],
-            ]]),
+                [
+                    'tag' => 'p',
+                    'children' => ['test text'],
+                ],
+            ]),
             HTML::convertToNode($input)->json()
         );
     }
@@ -321,6 +327,56 @@ final class HTMLTest extends TestCase
                 'tag' => 'p',
                 'children' => ['Hello world'],
 
+            ]]),
+            HTML::convertToNode($input)->json()
+        );
+    }
+
+
+    /** @test */
+    public function test_convert_dom_document()
+    {
+        $input = new DOMDocument();
+        $input->loadHTML(
+            mb_convert_encoding(
+                '<p>Hello world <a href="https://example.com/">link</a></p>',
+                'HTML-ENTITIES',
+                'UTF-8'
+            ),
+            LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD
+        );
+
+        $this->assertEquals(
+            json_encode([[
+                'tag' => 'p',
+                'children' => [
+                    'Hello world ',
+                    [
+                        'tag' => 'a',
+                        'attrs' => [
+                            'href' => 'https://example.com/',
+                        ],
+                        'children' => [
+                            'link',
+                        ],
+                    ],
+                ],
+            ]]),
+            HTML::convertToNode($input)->json()
+        );
+
+        $input->loadHTML(
+            mb_convert_encoding(
+                '<p></p>',
+                'HTML-ENTITIES',
+                'UTF-8'
+            ),
+            LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD
+        );
+
+        $this->assertEquals(
+            json_encode([[
+                'tag' => 'p',
             ]]),
             HTML::convertToNode($input)->json()
         );
