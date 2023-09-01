@@ -1,11 +1,11 @@
 <?php
 
-namespace TelegraphNodesConverter;
+namespace TelegraphNodeConverter;
 
 use DOMDocument;
 use DOMElement;
 use DOMText;
-use TelegraphNodesConverter\Types\NodeType;
+use TelegraphNodeConverter\Types\NodeType;
 
 /**
  * Class HTML

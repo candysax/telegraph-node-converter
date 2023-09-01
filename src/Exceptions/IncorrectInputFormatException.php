@@ -1,5 +1,5 @@
 <?php
 
-namespace TelegraphNodesConverter\Exceptions;
+namespace TelegraphNodeConverter\Exceptions;
 
 class IncorrectInputFormatException extends \Exception { }

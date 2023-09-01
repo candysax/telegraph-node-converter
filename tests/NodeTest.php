@@ -1,8 +1,8 @@
 <?php
 
-use TelegraphNodesConverter\Exceptions\IncorrectInputFormatException;
-use TelegraphNodesConverter\Node;
-use TelegraphNodesConverter\Types\HTMLType;
+use TelegraphNodeConverter\Exceptions\IncorrectInputFormatException;
+use TelegraphNodeConverter\Node;
+use TelegraphNodeConverter\Types\HTMLType;
 use PHPUnit\Framework\TestCase;
 
 

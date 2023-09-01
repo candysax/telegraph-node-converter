@@ -1,9 +1,9 @@
 <?php
 
-namespace TelegraphNodesConverter\Types;
+namespace TelegraphNodeConverter\Types;
 
 use DOMDocument;
-use TelegraphNodesConverter\HTML;
+use TelegraphNodeConverter\HTML;
 
 
 /**

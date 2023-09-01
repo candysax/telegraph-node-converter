@@ -1,7 +1,7 @@
 <?php
 
-use TelegraphNodesConverter\HTML;
-use TelegraphNodesConverter\Types\NodeType;
+use TelegraphNodeConverter\HTML;
+use TelegraphNodeConverter\Types\NodeType;
 use PHPUnit\Framework\TestCase;
 
 
