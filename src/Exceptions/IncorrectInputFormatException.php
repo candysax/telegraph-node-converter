@@ -1,5 +1,5 @@
 <?php
 
-namespace HtmlToTelegraphNode\Exceptions;
+namespace HtmlToTelegraphNodes\Exceptions;
 
 class IncorrectInputFormatException extends \Exception { }

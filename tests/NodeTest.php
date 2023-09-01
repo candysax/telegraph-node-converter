@@ -1,8 +1,8 @@
 <?php
 
-use HtmlToTelegraphNode\Exceptions\IncorrectInputFormatException;
-use HtmlToTelegraphNode\Node;
-use HtmlToTelegraphNode\Types\HTMLType;
+use HtmlToTelegraphNodes\Exceptions\IncorrectInputFormatException;
+use HtmlToTelegraphNodes\Node;
+use HtmlToTelegraphNodes\Types\HTMLType;
 use PHPUnit\Framework\TestCase;
 
 

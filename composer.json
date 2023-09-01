@@ -1,11 +1,10 @@
 {
-    "name": "candysax/html-to-telegraph-node",
+    "name": "candysax/html-to-telegraph-nodes",
     "description": "Convert HTML to the content of the Telegraph page and back.",
-    "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "HtmlToTelegraphNode\\": "src/"
+            "HtmlToTelegraphNodes\\": "src/"
         }
     },
     "authors": [

@@ -1,9 +1,9 @@
 <?php
 
-namespace HtmlToTelegraphNode\Types;
+namespace HtmlToTelegraphNodes\Types;
 
 use DOMDocument;
-use HtmlToTelegraphNode\HTML;
+use HtmlToTelegraphNodes\HTML;
 
 
 /**

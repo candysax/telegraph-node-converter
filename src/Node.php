@@ -1,9 +1,9 @@
 <?php
 
-namespace HtmlToTelegraphNode;
+namespace HtmlToTelegraphNodes;
 
-use HtmlToTelegraphNode\Exceptions\IncorrectInputFormatException;
-use HtmlToTelegraphNode\Types\HTMLType;
+use HtmlToTelegraphNodes\Exceptions\IncorrectInputFormatException;
+use HtmlToTelegraphNodes\Types\HTMLType;
 
 /**
  * Class Node

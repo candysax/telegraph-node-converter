@@ -1,6 +1,6 @@
 <?php
 
-use HtmlToTelegraphNode\Node;
+use HtmlToTelegraphNodes\Node;
 use PHPUnit\Framework\TestCase;
 
 

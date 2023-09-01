@@ -1,11 +1,11 @@
 <?php
 
-namespace HtmlToTelegraphNode;
+namespace HtmlToTelegraphNodes;
 
 use DOMDocument;
 use DOMElement;
 use DOMText;
-use HtmlToTelegraphNode\Types\NodeType;
+use HtmlToTelegraphNodes\Types\NodeType;
 
 /**
  * Class HTML

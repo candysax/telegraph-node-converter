@@ -1,8 +1,8 @@
 <?php
 
-namespace HtmlToTelegraphNode\Types;
+namespace HtmlToTelegraphNodes\Types;
 
-use HtmlToTelegraphNode\Node;
+use HtmlToTelegraphNodes\Node;
 
 
 /**
