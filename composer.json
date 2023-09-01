@@ -1,5 +1,6 @@
 {
     "name": "candysax/html-to-telegraph-node",
+    "description": "Convert HTML to the content of the Telegraph page and back.",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -14,10 +15,9 @@
         }
     ],
     "require-dev": {
-        "phpunit/phpunit": "^10.3",
-        "monolog/monolog": "^3.4"
+        "phpunit/phpunit": "^10.3"
     },
     "require": {
-        "guzzlehttp/guzzle": "^7.7"
+        "php": ">=5.4"
     }
 }
