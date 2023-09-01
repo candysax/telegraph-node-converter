@@ -1,6 +1,6 @@
 <?php
 
-use HtmlToTelegraphNodes\HTML;
+use TelegraphNodesConverter\HTML;
 use PHPUnit\Framework\TestCase;
 
 

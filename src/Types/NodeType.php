@@ -1,8 +1,8 @@
 <?php
 
-namespace HtmlToTelegraphNodes\Types;
+namespace TelegraphNodesConverter\Types;
 
-use HtmlToTelegraphNodes\Node;
+use TelegraphNodesConverter\Node;
 
 
 /**
