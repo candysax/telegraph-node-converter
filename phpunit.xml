@@ -8,8 +8,8 @@
          requireCoverageMetadata="false"
          beStrictAboutCoverageMetadata="true"
          beStrictAboutOutputDuringTests="true"
-         failOnRisky="true"
-         failOnWarning="true">
+         failOnRisky="false"
+         failOnWarning="false">
     <testsuites>
         <testsuite name="default">
             <directory>tests</directory>

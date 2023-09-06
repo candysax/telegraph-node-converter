@@ -1,10 +1,12 @@
 {
     "name": "candysax/telegraph-node-converter",
     "description": "Convert HTML to the content of the Telegraph page and back.",
+    "type": "library",
     "license": "MIT",
+    "homepage": "https://github.com/candysax/telegraph-node-converter",
     "autoload": {
         "psr-4": {
-            "TelegraphNodeConverter\\": "src/"
+            "Candysax\\TelegraphNodeConverter\\": "src/"
         }
     },
     "authors": [
@@ -17,6 +19,6 @@
         "phpunit/phpunit": "^10.3"
     },
     "require": {
-        "php": ">=5.4"
+        "php": ">=7.2"
     }
 }

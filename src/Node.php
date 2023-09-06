@@ -1,9 +1,9 @@
 <?php
 
-namespace TelegraphNodeConverter;
+namespace Candysax\TelegraphNodeConverter;
 
-use TelegraphNodeConverter\Exceptions\IncorrectInputFormatException;
-use TelegraphNodeConverter\Types\HTMLType;
+use Candysax\TelegraphNodeConverter\Exceptions\IncorrectInputFormatException;
+use Candysax\TelegraphNodeConverter\Types\HTMLType;
 
 /**
  * Class Node
@@ -37,7 +37,7 @@ class Node
 
 
     /**
-     * Recursive function that traverses the array hierarchy and generates HTML code.
+     * Traverses the array hierarchy and generates HTML code.
      *
      * @param array $parent The element of the array in which we collect children.
      * @throws IncorrectInputFormatException If an incorrect node array format is passed.
@@ -52,9 +52,10 @@ class Node
             if (is_array($node)) {
                 if (!isset($node['tag'])) throw new IncorrectInputFormatException('The node element must contain the tag name.');
 
-                $tag = $node['tag'];
+                $tag = strtolower($node['tag']);
 
                 $attrs = '';
+                if (isset($node['attrs']))
                 foreach ($node['attrs'] as $attr => $value) {
                     $attrs .= ' ' . $attr . '="' . $value . '"';
                 }

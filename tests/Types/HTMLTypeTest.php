@@ -1,6 +1,6 @@
 <?php
 
-use TelegraphNodeConverter\Node;
+use Candysax\TelegraphNodeConverter\Node;
 use PHPUnit\Framework\TestCase;
 
 

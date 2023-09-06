@@ -1,8 +1,8 @@
 <?php
 
-use TelegraphNodeConverter\Exceptions\IncorrectInputFormatException;
-use TelegraphNodeConverter\Node;
-use TelegraphNodeConverter\Types\HTMLType;
+use Candysax\TelegraphNodeConverter\Exceptions\IncorrectInputFormatException;
+use Candysax\TelegraphNodeConverter\Node;
+use Candysax\TelegraphNodeConverter\Types\HTMLType;
 use PHPUnit\Framework\TestCase;
 
 
@@ -386,5 +386,4 @@ final class NodeTest extends TestCase
             ]
         ]);
     }
-
 }

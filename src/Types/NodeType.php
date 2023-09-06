@@ -1,8 +1,8 @@
 <?php
 
-namespace TelegraphNodeConverter\Types;
+namespace Candysax\TelegraphNodeConverter\Types;
 
-use TelegraphNodeConverter\Node;
+use Candysax\TelegraphNodeConverter\Node;
 
 
 /**

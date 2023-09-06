@@ -1,9 +1,9 @@
 <?php
 
-namespace TelegraphNodeConverter\Types;
+namespace Candysax\TelegraphNodeConverter\Types;
 
 use DOMDocument;
-use TelegraphNodeConverter\HTML;
+use Candysax\TelegraphNodeConverter\HTML;
 
 
 /**

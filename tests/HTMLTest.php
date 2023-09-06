@@ -1,7 +1,7 @@
 <?php
 
-use TelegraphNodeConverter\HTML;
-use TelegraphNodeConverter\Types\NodeType;
+use Candysax\TelegraphNodeConverter\HTML;
+use Candysax\TelegraphNodeConverter\Types\NodeType;
 use PHPUnit\Framework\TestCase;
 
 
@@ -342,8 +342,7 @@ final class HTMLTest extends TestCase
                 '<p>Hello world <a href="https://example.com/">link</a></p>',
                 'HTML-ENTITIES',
                 'UTF-8'
-            ),
-            LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD
+            )
         );
 
         $this->assertEquals(
