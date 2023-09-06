@@ -58,7 +58,6 @@ class HTML
             $elementRepresentation = [];
             if ($element instanceof DOMText) {
                 $nodes[] = $element->textContent;
-
             } elseif ($element instanceof DOMElement) {
                 $elementRepresentation['tag'] = strtolower($element->tagName);
 
