@@ -1,5 +1,7 @@
 <?php
 
+namespace Candysax\TelegraphNodeConverter\Tests;
+
 use Candysax\TelegraphNodeConverter\HTML;
 use PHPUnit\Framework\TestCase;
 

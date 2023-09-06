@@ -1,8 +1,11 @@
 <?php
 
+namespace Candysax\TelegraphNodeConverter\Tests;
+
 use Candysax\TelegraphNodeConverter\Exceptions\IncorrectInputFormatException;
 use Candysax\TelegraphNodeConverter\Node;
 use Candysax\TelegraphNodeConverter\Types\HTMLType;
+use DOMDocument;
 use PHPUnit\Framework\TestCase;
 
 

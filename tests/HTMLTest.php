@@ -1,7 +1,10 @@
 <?php
 
+namespace Candysax\TelegraphNodeConverter\Tests;
+
 use Candysax\TelegraphNodeConverter\HTML;
 use Candysax\TelegraphNodeConverter\Types\NodeType;
+use DOMDocument;
 use PHPUnit\Framework\TestCase;
 
 
