@@ -21,12 +21,13 @@ class Node
      *
      * @param string|array $nodes The node to convert to HTML representations.
      * @throws IncorrectInputFormatException If an incorrect node array format is passed.
+     * @throws InvalidNodeArgumentTypeException If the passed argument is not a json string or an array.
      * @return HTMLType A class containing the HTML representation of the node in string or DOMDocument format.
      */
     public static function convertToHtml($nodes)
     {
         if (!is_string($nodes) && !is_array($nodes)) {
-            throw new InvalidNodeArgumentTypeException('The argument passed to convertToHtml must be a string or an array.');
+            throw new InvalidNodeArgumentTypeException('The argument passed to convertToHtml must be a json string or an array.');
         }
 
         $nodes = is_string($nodes) ? json_decode($nodes, true) : $nodes;

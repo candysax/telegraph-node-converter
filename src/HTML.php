@@ -22,6 +22,7 @@ class HTML
      * Converts the given HTML to its Telegraph Node representation.
      *
      * @param string|DOMDocument $html HTML to convert to json or array representations (https://telegra.ph/api#NodeElement).
+     * @throws InvalidHTMLArgumentTypeException If the passed argument is not a string or a DOMDocument object.
      * @return NodeType A class containing a Node representation in array or json format.
      */
     public static function convertToNode($html)
