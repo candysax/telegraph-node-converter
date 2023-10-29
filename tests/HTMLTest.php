@@ -2,7 +2,9 @@
 
 namespace Candysax\TelegraphNodeConverter\Tests;
 
+use Candysax\TelegraphNodeConverter\Exceptions\InvalidHTMLArgumentTypeException;
 use Candysax\TelegraphNodeConverter\HTML;
+use Candysax\TelegraphNodeConverter\Node;
 use Candysax\TelegraphNodeConverter\Types\NodeType;
 use DOMDocument;
 use PHPUnit\Framework\TestCase;
@@ -382,5 +384,18 @@ final class HTMLTest extends TestCase
             ]]),
             HTML::convertToNode($input)->json()
         );
+    }
+
+
+    /** @test */
+    public function test_pass_an_invalid_type()
+    {
+        $input = new Node();
+        $this->expectException(InvalidHTMLArgumentTypeException::class);
+        HTML::convertToNode($input);
+
+        $input = ['a', 'b'];
+        $this->expectException(InvalidHTMLArgumentTypeException::class);
+        HTML::convertToNode($input);
     }
 }

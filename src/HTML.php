@@ -2,6 +2,7 @@
 
 namespace Candysax\TelegraphNodeConverter;
 
+use Candysax\TelegraphNodeConverter\Exceptions\InvalidHTMLArgumentTypeException;
 use DOMDocument;
 use DOMElement;
 use DOMText;
@@ -23,7 +24,7 @@ class HTML
      * @param string|DOMDocument $html HTML to convert to json or array representations (https://telegra.ph/api#NodeElement).
      * @return NodeType A class containing a Node representation in array or json format.
      */
-    public static function convertToNode(string|DOMDocument $html)
+    public static function convertToNode($html)
     {
         if (is_string($html)) {
             $html = "<div>{$html}</div>";
@@ -32,9 +33,11 @@ class HTML
             $dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_PARSEHUGE);
             $bodyElement = $dom->getElementsByTagName('body')[0];
             if (isset($bodyElement)) $dom = self::wrapDomDocument($bodyElement);
-        } else {
+        } else if ($html instanceof DOMDocument) {
             $bodyElement = $html->getElementsByTagName('body')[0];
             $dom = self::wrapDomDocument(isset($bodyElement) ? $bodyElement : $html);
+        } else {
+            throw new InvalidHTMLArgumentTypeException('The argument passed to convertToNode must be a string or a DOMDocument object.');
         }
 
         $root = $dom->documentElement;

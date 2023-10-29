@@ -3,6 +3,7 @@
 namespace Candysax\TelegraphNodeConverter\Tests;
 
 use Candysax\TelegraphNodeConverter\Exceptions\IncorrectInputFormatException;
+use Candysax\TelegraphNodeConverter\Exceptions\InvalidNodeArgumentTypeException;
 use Candysax\TelegraphNodeConverter\Node;
 use Candysax\TelegraphNodeConverter\Types\HTMLType;
 use DOMDocument;
@@ -389,4 +390,18 @@ final class NodeTest extends TestCase
             ]
         ]);
     }
+
+
+    /** @test */
+    public function test_pass_an_invalid_type()
+    {
+        $input = new DOMDocument();
+        $this->expectException(InvalidNodeArgumentTypeException::class);
+        Node::convertToHtml($input);
+
+        $input = 123;
+        $this->expectException(InvalidNodeArgumentTypeException::class);
+        Node::convertToHtml($input);
+    }
+
 }

@@ -3,6 +3,7 @@
 namespace Candysax\TelegraphNodeConverter;
 
 use Candysax\TelegraphNodeConverter\Exceptions\IncorrectInputFormatException;
+use Candysax\TelegraphNodeConverter\Exceptions\InvalidNodeArgumentTypeException;
 use Candysax\TelegraphNodeConverter\Types\HTMLType;
 
 /**
@@ -22,8 +23,12 @@ class Node
      * @throws IncorrectInputFormatException If an incorrect node array format is passed.
      * @return HTMLType A class containing the HTML representation of the node in string or DOMDocument format.
      */
-    public static function convertToHtml(string|array $nodes)
+    public static function convertToHtml($nodes)
     {
+        if (!is_string($nodes) && !is_array($nodes)) {
+            throw new InvalidNodeArgumentTypeException('The argument passed to convertToHtml must be a string or an array.');
+        }
+
         $nodes = is_string($nodes) ? json_decode($nodes, true) : $nodes;
         $nodes = [[
             'tag' => 'div',
