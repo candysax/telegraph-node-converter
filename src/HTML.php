@@ -25,25 +25,26 @@ class HTML
      * @throws InvalidHTMLArgumentTypeException If the passed argument is not a string or a DOMDocument object.
      * @return NodeType A class containing a Node representation in array or json format.
      */
-    public static function convertToNode($html)
+    public static function convertToNode($html): NodeType
     {
         if (is_string($html)) {
             $html = "<div>{$html}</div>";
 
-            $dom = new DOMDocument(encoding: 'UTF-8');
+            $dom = new DOMDocument('1.0', 'UTF-8');
+            libxml_use_internal_errors(true);
             $dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_PARSEHUGE);
             $bodyElement = $dom->getElementsByTagName('body')[0];
             if (isset($bodyElement)) $dom = self::wrapDomDocument($bodyElement);
         } else if ($html instanceof DOMDocument) {
             $bodyElement = $html->getElementsByTagName('body')[0];
-            $dom = self::wrapDomDocument(isset($bodyElement) ? $bodyElement : $html);
+            $dom = self::wrapDomDocument($bodyElement ?? $html);
         } else {
-            throw new InvalidHTMLArgumentTypeException('The argument passed to convertToNode must be a string or a DOMDocument object.');
+            throw new InvalidHTMLArgumentTypeException;
         }
 
         $root = $dom->documentElement;
 
-        return new NodeType(self::collectElemenets($root));
+        return new NodeType(self::collectElements($root));
     }
 
 
@@ -53,7 +54,7 @@ class HTML
      * @param DomElement $parent The element of the DOM tree in which we collect children.
      * @return array An element in NodeElement format.
      */
-    private static function collectElemenets(DOMElement $parent)
+    private static function collectElements(DOMElement $parent): array
     {
         $nodes = [];
         $elements = $parent->childNodes;
@@ -72,7 +73,7 @@ class HTML
                 }
 
                 if (count($element->childNodes) > 0) {
-                    $elementRepresentation['children'] = self::collectElemenets($element);
+                    $elementRepresentation['children'] = self::collectElements($element);
                 }
 
                 $nodes[] = $elementRepresentation;
@@ -84,12 +85,12 @@ class HTML
 
 
     /**
-     * Wraps the domdocument in the parent element.
+     * Wraps the DOMDocument in the parent element.
      *
      * @param DOMDocument|DOMElement $dom Source DOMDocument object.
      * @return DOMDocument Converted DOMDocument object.
      */
-    private static function wrapDomDocument(DOMDocument|DOMElement $dom)
+    private static function wrapDomDocument($dom): DOMDocument
     {
         $newDom = new DOMDocument();
         $rootElement = $newDom->createElement('div');

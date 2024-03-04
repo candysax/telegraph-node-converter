@@ -352,7 +352,7 @@ final class NodeTest extends TestCase
             ],
         ]];
 
-        $dom = new DOMDocument(encoding: 'UTF-8');
+        $dom = new DOMDocument('1.0','UTF-8');
         $dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
         $this->assertEquals($dom, Node::convertToHtml($input)->dom());

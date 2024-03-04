@@ -1,6 +1,6 @@
 <?php
 
-namespace Candysax\TelegraphNodeConverter\Tests;
+namespace Candysax\TelegraphNodeConverter\Tests\Types\Types;
 
 use Candysax\TelegraphNodeConverter\HTML;
 use PHPUnit\Framework\TestCase;

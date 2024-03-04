@@ -2,6 +2,7 @@
 
 namespace Candysax\TelegraphNodeConverter\Types;
 
+use Candysax\TelegraphNodeConverter\Exceptions\InvalidHTMLArgumentTypeException;
 use DOMDocument;
 use Candysax\TelegraphNodeConverter\HTML;
 
@@ -15,7 +16,7 @@ use Candysax\TelegraphNodeConverter\HTML;
  */
 class HTMLType
 {
-    private string $html;
+    private $html;
 
     public function __construct(string $html)
     {
@@ -26,9 +27,10 @@ class HTMLType
     /**
      * Converts the given HTML to its Telegraph Node representation.
      *
+     * @throws InvalidHTMLArgumentTypeException If the passed argument is not a string or a DOMDocument object.
      * @return NodeType A class containing a Node representation in array or json format.
      */
-    public function convertToNode()
+    public function convertToNode(): NodeType
     {
         return HTML::convertToNode($this->html);
     }
@@ -39,7 +41,7 @@ class HTMLType
      *
      * @return string HTML string.
      */
-    public function string()
+    public function string(): string
     {
         return $this->html;
     }
@@ -50,9 +52,9 @@ class HTMLType
      *
      * @return DOMDocument DOMDocument object.
      */
-    public function dom()
+    public function dom(): DOMDocument
     {
-        $dom = new DOMDocument(encoding: 'UTF-8');
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->loadHTML(mb_convert_encoding($this->html, 'HTML-ENTITIES', 'UTF-8'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
         return $dom;

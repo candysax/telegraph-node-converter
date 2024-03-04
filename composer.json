@@ -20,13 +20,17 @@
             "Candysax\\TelegraphNodeConverter\\Tests\\": "tests/"
         }
     },
-    "require-dev": {
-        "phpunit/phpunit": "^10.3"
-    },
     "require": {
-        "php": ">=7.2"
+        "php": ">=7.3",
+        "ext-dom": "*",
+        "ext-mbstring": "*",
+        "ext-json": "*",
+        "ext-libxml": "*"
     },
     "scripts": {
         "test": "vendor/bin/phpunit"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
     }
 }

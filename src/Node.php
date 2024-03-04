@@ -24,10 +24,10 @@ class Node
      * @throws InvalidNodeArgumentTypeException If the passed argument is not a json string or an array.
      * @return HTMLType A class containing the HTML representation of the node in string or DOMDocument format.
      */
-    public static function convertToHtml($nodes)
+    public static function convertToHtml($nodes): HTMLType
     {
         if (!is_string($nodes) && !is_array($nodes)) {
-            throw new InvalidNodeArgumentTypeException('The argument passed to convertToHtml must be a json string or an array.');
+            throw new InvalidNodeArgumentTypeException;
         }
 
         $nodes = is_string($nodes) ? json_decode($nodes, true) : $nodes;
@@ -36,7 +36,7 @@ class Node
             'children' => $nodes,
         ]];
 
-        $html = self::collectElemenets($nodes[0]);
+        $html = self::collectElements($nodes[0]);
 
         return new HTMLType($html);
     }
@@ -49,14 +49,14 @@ class Node
      * @throws IncorrectInputFormatException If an incorrect node array format is passed.
      * @return string An element in HTML format.
      */
-    private static function collectElemenets(array $parent)
+    private static function collectElements(array $parent): string
     {
         $html = '';
-        $nodes = $parent['children'];
+        $nodes = $parent['children'] ?? [];
 
         foreach ($nodes as $node) {
             if (is_array($node)) {
-                if (!isset($node['tag'])) throw new IncorrectInputFormatException('The node element must contain the tag name.');
+                if (!isset($node['tag'])) throw IncorrectInputFormatException::mustContainTheTagName();
 
                 $tag = strtolower($node['tag']);
 
@@ -69,12 +69,12 @@ class Node
                 if (in_array($tag, self::EMPTY_TAGS)) {
                     $html .= "<{$tag}{$attrs} />";
                 } else {
-                    $html .= "<{$tag}{$attrs}>" . self::collectElemenets($node) . "</{$tag}>";
+                    $html .= "<{$tag}{$attrs}>" . self::collectElements($node) . "</{$tag}>";
                 }
             } elseif (is_string($node)) {
                 $html .= $node;
             } else {
-                throw new IncorrectInputFormatException('Array of nodes must contain only the array or string type.');
+                throw IncorrectInputFormatException::mustContainOnlyTheArrayOrStringType();
             }
         }
 

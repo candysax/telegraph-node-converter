@@ -2,6 +2,8 @@
 
 namespace Candysax\TelegraphNodeConverter\Types;
 
+use Candysax\TelegraphNodeConverter\Exceptions\IncorrectInputFormatException;
+use Candysax\TelegraphNodeConverter\Exceptions\InvalidNodeArgumentTypeException;
 use Candysax\TelegraphNodeConverter\Node;
 
 
@@ -14,7 +16,7 @@ use Candysax\TelegraphNodeConverter\Node;
  */
 class NodeType
 {
-    private array $nodes;
+    private $nodes;
 
     public function __construct(array $nodes)
     {
@@ -25,9 +27,11 @@ class NodeType
     /**
      * Converts the given Telegraph Node to its HTML representation.
      *
+     * @throws IncorrectInputFormatException If an incorrect node array format is passed.
+     * @throws InvalidNodeArgumentTypeException If the passed argument is not a json string or an array.
      * @return HTMLType A class containing the HTML representation of the node in string or DOMDocument format.
      */
-    public function convertToHtml()
+    public function convertToHtml(): HTMLType
     {
         return Node::convertToHtml($this->nodes);
     }
@@ -38,7 +42,7 @@ class NodeType
      *
      * @return string Node in json string format.
      */
-    public function json()
+    public function json(): string
     {
         return json_encode($this->nodes);
     }
@@ -49,7 +53,7 @@ class NodeType
      *
      * @return array Node in array format.
      */
-    public function array()
+    public function array(): array
     {
         return $this->nodes;
     }
